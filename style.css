@@ -1,0 +1,341 @@
+:root {
+    --red: #ba2d0b;
+    --red-lightened: #ca411e;
+    --dark: #05100e;
+    --dark-2: #071815;
+    --dark-3: #15302b;
+    --dark-3-lightened: #1f3d37;
+    --dark-4: #214b44;
+    --dark-4-lightened: #2c5851;
+    --white: #fff;
+    --mint-cream: #f1f7ed;
+    --grey: #c2c5c1;
+}
+
+/* Text Styling */
+
+h1,
+h2,
+h3,
+p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+h1 {
+    font-family: 'flegrei', sans-serif;
+    margin: auto;
+}
+
+h2 {
+    padding-top: 5px;
+    font-family: 'westgate', sans-serif;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+p {
+    font-weight: 200;
+    font-size: 20px;
+    padding-bottom: 0.5em;
+    letter-spacing: 0.05em;
+}
+
+a {
+    color: var(--grey);
+    letter-spacing: 0.05em;
+}
+
+a:hover {
+    color: var(--mint-cream);
+}
+
+abbr {
+    letter-spacing: 0.05em;
+}
+
+/* Fixed header Related */
+
+header {
+    position: fixed;
+    top: 0px;
+    height: 89px;
+    width: calc(80% - 32px);
+    z-index: 6;
+    text-align: center;
+}
+
+h1,
+h2 {
+    position: relative;
+    /* left: calc(50%); */
+    /* transform: translateX(calc(-80% * 0.5 - 11px)); */
+    /* transform: translateX(-50%); */
+    z-index: 100;
+}
+
+h1 {
+    padding-top: 12px;
+    /* top: 16px; */
+}
+
+h2 {
+    /* top: 40px; */
+}
+
+/* Generic header piece sizing/placement. */
+body::after,
+.summary::after,
+.page-wrapper::after,
+.intro::after {
+    top: 0px;
+    height: 89px;
+    content: '';
+}
+
+/* Initial red header background */
+.intro::after {
+    position: absolute;
+    z-index: 5;
+    background-color: var(--red);
+    width: 100%;
+    left: 0px;
+}
+
+/* Scrolling red background behind page title. */
+.summary::after {
+    position: fixed;
+    z-index: 1;
+    background-color: var(--red);
+    width: calc(80% - 32px);
+    left: 16px;
+}
+
+/* Black Bars */
+.page-wrapper::after,
+body::after {
+    position: fixed;
+    z-index: 2;
+    background-color: var(--dark-2);
+    width: calc(50% - (628px / 2));
+    /* 1/2 parent div - (desired header width / 2) */
+}
+
+/* Right Black Bar */
+.page-wrapper::after {
+    right: calc(20% + 15px);
+}
+
+/* Left Black Bar */
+body::after {
+    left: 16px;
+}
+
+/* Background elements/borders flowing under header */
+
+/* Intro + Main divider */
+.preamble::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    z-index: 3;
+    left: 0px;
+    height: 16px;
+    background-color: var(--dark-2);
+}
+
+.main > *::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    z-index: 3;
+    left: 0px;
+    height: 1px;
+    background-color: var(--dark-2);
+}
+
+/* Shift rest of content for natural document flow. */
+.summary,
+.preamble,
+.main {
+    position: relative;
+    top: 89px;
+}
+
+/* Fixed Header Related END */
+
+/* Hover on section effects */
+
+.intro > div,
+.intro::after,
+.summary::after,
+.main > div,
+.sidebar {
+    transition: 0.75s;
+}
+
+.intro:hover > div,
+.intro:hover::after,
+.intro:hover .summary::after {
+    background-color: var(--red-lightened);
+    transition: 0.75s;
+    box-shadow: inset -1em 0px var(--mint-cream);
+}
+
+.main > div:hover {
+    background-color: var(--dark-4-lightened);
+    transition: 0.75s;
+    box-shadow: inset -1em 0px var(--mint-cream);
+}
+
+.sidebar:hover {
+    background: var(--dark-3-lightened);
+    transition: 0.75s;
+    box-shadow: inset -1em 0px var(--mint-cream);
+}
+
+/* Page Elements */
+/* Top Level */
+body {
+    color: var(--mint-cream);
+    background-color: var(--dark-2);
+    margin: 0;
+    font-family: 'oswald', sans-serif;
+}
+
+.page-wrapper {
+    position: relative;
+    margin-left: 16px;
+}
+
+/* Intro */
+.intro {
+    position: relative;
+    width: calc(80% - 20px);
+    margin-bottom: 15px;
+    /* Margin - .main div 1px border */
+}
+
+.summary,
+.preamble {
+    padding-right: 10%;
+    padding-left: 5%;
+    background-color: var(--red);
+}
+
+/* Main */
+.main {
+    width: calc(80% - 20px);
+    background-color: var(--dark-4);
+}
+
+.main > div {
+    padding-right: 10%;
+    padding-left: 5%;
+}
+
+h3 {
+    padding-top: 1em;
+}
+
+.intro > div:last-of-type > p:last-of-type,
+.main > div > p:last-of-type {
+    padding-bottom: 1em;
+}
+
+.main > div:last-of-type > p:last-of-type {
+    font-size: 0.95em;
+    font-style: italic;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 20%;
+    height: 70%;
+    background-color: var(--dark-3);
+}
+
+.wrapper {
+    margin-right: 1em;
+    margin-left: 1em;
+    margin-bottom: 1em;
+}
+
+/* .sidebar h3 {
+    padding-top: 0;
+} */
+
+.sidebar ul {
+    list-style: none;
+    padding-left: 1em;
+    margin: 0;
+}
+
+/* .sidebar ul > li {
+    color: var(--dark-3);
+    font-size: 1px;
+    width: 100%;
+}
+
+.sidebar ul > li > a:first-child {
+    display: block;
+    font-size: 1rem;
+}
+
+.sidebar ul > li > a:last-child {
+    display: block;
+    font-size: 0.9rem;
+    line-height: 0.8rem;
+    padding-bottom: 0.5em;
+    padding-left: 1rem;
+} */
+
+/* Footer */
+footer {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+}
+
+footer::before {
+    flex: 1;
+    flex-grow: 0;
+    flex-basis: 70%;
+    /* Override generic main selector. */
+    position: initial !important;
+    width: auto !important;
+    height: auto !important;
+    content: '' !important;
+    left: initial !important;
+    z-index: auto !important;
+}
+
+footer > a {
+    flex: 1;
+    flex-grow: 0;
+    font-family: 'westgate', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    display: block;
+    margin: auto;
+    width: 20%;
+}
+
+/* footer::before {
+    content: none !important;
+} */

@@ -361,9 +361,11 @@ footer > a {
         top: auto;
         width: 100%;
         height: auto;
-    }
-    .sidebar {
         padding-bottom: 1em;
+        padding-left: 5%;
+    }
+    .wrapper {
+        margin-left: 0;
     }
 
     /* Move Footer below sidebar */

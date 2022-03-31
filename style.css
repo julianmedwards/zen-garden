@@ -72,19 +72,11 @@ header {
 h1,
 h2 {
     position: relative;
-    /* left: calc(50%); */
-    /* transform: translateX(calc(-80% * 0.5 - 11px)); */
-    /* transform: translateX(-50%); */
     z-index: 100;
 }
 
 h1 {
     padding-top: 12px;
-    /* top: 16px; */
-}
-
-h2 {
-    /* top: 40px; */
 }
 
 /* Generic header piece sizing/placement. */
@@ -320,7 +312,7 @@ footer::before {
     position: initial !important;
     width: auto !important;
     height: auto !important;
-    content: '' !important;
+    content: '';
     left: initial !important;
     z-index: auto !important;
 }
@@ -336,6 +328,115 @@ footer > a {
     width: 20%;
 }
 
-/* footer::before {
-    content: none !important;
-} */
+/* Media Queries */
+
+/* Collapsing Footer & Sidebar */
+/* <900h or <1366w - Footer collapses */
+@media screen and (max-height: 899px), screen and (max-width: 1365px) {
+    footer {
+        display: block;
+        position: relative;
+        width: 100%;
+        background-color: var(--dark-2);
+    }
+    footer > a:first-child {
+        padding-top: 1em;
+    }
+    footer > a:last-child {
+        padding-bottom: 1em;
+    }
+
+    /* Switch ::before to normal divider */
+    footer::before {
+        flex: none;
+        position: absolute !important;
+        width: 100% !important;
+        height: 1px !important;
+        content: '';
+        left: 0px !important;
+        z-index: 3 !important;
+    }
+    /* Enable hover effects */
+    footer {
+        transition: 0.75s;
+    }
+    footer:hover {
+        background-color: var(--dark-4-lightened);
+        transition: 0.75s;
+        box-shadow: inset -1em 0px var(--mint-cream);
+    }
+
+    /* Sidebar at full height */
+    .sidebar {
+        height: 100%;
+    }
+}
+
+/* <600h or <1024w - Sidebar collapses */
+@media screen and (max-height: 599px), screen and (max-width: 1023px) {
+    .sidebar {
+        position: relative;
+        bottom: 154px;
+        top: auto;
+        width: 100%;
+        height: auto;
+    }
+    .sidebar {
+        padding-bottom: 1em;
+    }
+
+    /* Move Footer below sidebar */
+    footer {
+        position: relative;
+        top: 572px;
+    }
+
+    /* Turn footer divider back off */
+    footer::before {
+        /* Override. */
+        position: initial !important;
+        width: auto !important;
+        height: auto !important;
+        content: '';
+        left: initial !important;
+        z-index: auto !important;
+    }
+
+    /* Intro & Main full width */
+    .page-wrapper {
+        margin-right: 16px;
+    }
+    .intro {
+        width: auto;
+    }
+    header {
+        width: calc(100% - 32px);
+    }
+    .summary::after {
+        width: calc(100% - 32px);
+    }
+    .intro::after {
+        width: 100%;
+    }
+    body::after,
+    .page-wrapper::after {
+        width: calc(60% - (628px / 2));
+    }
+    .page-wrapper::after {
+        right: 16px;
+    }
+    .main {
+        width: auto;
+    }
+
+    /* Disable header hover effect */
+    .intro:hover .summary::after {
+        background-color: var(--red);
+        transition: 0.75s;
+        box-shadow: none;
+    }
+}
+/* END Collapsing Footer & Sidebar */
+
+/* General */
+/* 1440px Wide */

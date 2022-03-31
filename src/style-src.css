@@ -1,0 +1,426 @@
+/* :root {
+    --red: #ba2d0b;
+    --red-lightened: #ca411e;
+    --dark: #05100e; unused
+    --dark-2: #071815;
+    --dark-3: #15302b;
+    --dark-3-lightened: #1f3d37;
+    --dark-4: #214b44;
+    --dark-4-lightened: #2c5851;
+    --mint-cream: #f1f7ed;
+    --grey: #c2c5c1;
+} */
+
+/* Text Styling */
+
+h1,
+h2,
+h3,
+p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+h1 {
+    font-family: 'flegrei', sans-serif;
+    margin: auto;
+}
+
+h2 {
+    padding-top: 5px;
+    font-family: 'westgate', sans-serif;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+p {
+    font-weight: 200;
+    font-size: 20px;
+    padding-bottom: 0.5em;
+    letter-spacing: 0.05em;
+}
+
+a {
+    color: #c2c5c1;
+    letter-spacing: 0.05em;
+}
+
+a:hover {
+    color: #f1f7ed;
+}
+
+abbr {
+    letter-spacing: 0.05em;
+}
+
+/* Fixed header Related */
+
+header {
+    position: fixed;
+    top: 0px;
+    height: 89px;
+    width: calc(80% - 32px);
+    z-index: 6;
+    text-align: center;
+}
+
+h1,
+h2 {
+    position: relative;
+    z-index: 100;
+}
+
+h1 {
+    padding-top: 12px;
+}
+
+/* Generic header piece sizing/placement. */
+body::after,
+.summary::after,
+.page-wrapper::after,
+.intro::after {
+    top: 0px;
+    height: 89px;
+    content: '';
+}
+
+/* Initial red header background */
+.intro::after {
+    position: absolute;
+    z-index: 5;
+    background-color: #ba2d0b;
+    width: 100%;
+    left: 0px;
+}
+
+/* Scrolling red background behind page title. */
+.summary::after {
+    position: fixed;
+    z-index: 1;
+    background-color: #ba2d0b;
+    width: calc(80% - 32px);
+    left: 16px;
+}
+
+/* Black Bars */
+.page-wrapper::after,
+body::after {
+    position: fixed;
+    z-index: 2;
+    background-color: #071815;
+    width: calc(50% - (628px / 2));
+    /* 1/2 parent div - (desired header width / 2) */
+}
+
+/* Right Black Bar */
+.page-wrapper::after {
+    right: calc(20% + 15px);
+}
+
+/* Left Black Bar */
+body::after {
+    left: 16px;
+}
+
+/* Background elements/borders flowing under header */
+
+/* Intro + Main divider */
+.preamble::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    z-index: 3;
+    left: 0px;
+    height: 16px;
+    background-color: #071815;
+}
+
+.main > *::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    z-index: 3;
+    left: 0px;
+    height: 2px;
+    background-color: #071815;
+}
+
+/* Shift rest of content for natural document flow. */
+.summary,
+.preamble,
+.main {
+    position: relative;
+    top: 89px;
+}
+
+/* Fixed Header Related END */
+
+/* Hover on section effects */
+
+.intro > div,
+.intro::after,
+.summary::after,
+.main > div,
+.sidebar {
+    transition: 0.75s;
+}
+
+.intro:hover > div,
+.intro:hover::after,
+.intro:hover .summary::after {
+    background-color: #ca411e;
+    transition: 0.75s;
+    box-shadow: inset -1em 0px #f1f7ed;
+}
+
+.main > div:hover {
+    background-color: #2c5851;
+    transition: 0.75s;
+    box-shadow: inset -1em 0px #f1f7ed;
+}
+
+.sidebar:hover {
+    background: #1f3d37;
+    transition: 0.75s;
+    box-shadow: inset -1em 0px #f1f7ed;
+}
+
+/* Page Elements */
+/* Top Level */
+body {
+    color: #f1f7ed;
+    background-color: #071815;
+    margin: 0;
+    font-family: 'oswald', sans-serif;
+}
+
+.page-wrapper {
+    position: relative;
+    margin-left: 16px;
+}
+
+/* Intro */
+.intro {
+    position: relative;
+    width: calc(80% - 20px);
+    margin-bottom: 15px;
+    /* Margin Minus .main div 1px border */
+}
+
+.summary,
+.preamble {
+    padding-right: 10%;
+    padding-left: 5%;
+    background-color: #ba2d0b;
+}
+
+/* Main */
+.main {
+    width: calc(80% - 20px);
+    background-color: #214b44;
+}
+
+.main > div {
+    padding-right: 10%;
+    padding-left: 5%;
+}
+
+h3 {
+    padding-top: 1em;
+}
+
+.intro > div:last-of-type > p:last-of-type,
+.main > div > p:last-of-type {
+    padding-bottom: 1em;
+}
+
+.main > div:last-of-type > p:last-of-type {
+    font-size: 0.95em;
+    font-style: italic;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 20%;
+    height: 70%;
+    background-color: #15302b;
+}
+
+.wrapper {
+    margin-right: 1em;
+    margin-left: 1em;
+    margin-bottom: 1em;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding-left: 1em;
+    margin: 0;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+}
+
+footer::before {
+    flex: 1;
+    flex-grow: 0;
+    flex-basis: 70%;
+    /* Override generic main selector. */
+    position: initial !important;
+    width: auto !important;
+    height: auto !important;
+    content: '';
+    left: initial !important;
+    z-index: auto !important;
+}
+
+footer > a {
+    flex: 1;
+    flex-grow: 0;
+    font-family: 'westgate', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    display: block;
+    margin: auto;
+    width: 20%;
+}
+
+/* Media Queries */
+
+/* Collapsing Footer & Sidebar */
+/* <900h or <1366w - Footer collapses */
+@media screen and (max-height: 899px), screen and (max-width: 1365px) {
+    footer {
+        display: block;
+        position: relative;
+        width: 100%;
+        background-color: #071815;
+    }
+    footer > a {
+        padding-bottom: 0.2em;
+    }
+    footer > a:first-child {
+        padding-top: 1em;
+    }
+    footer > a:last-child {
+        padding-bottom: 1em;
+    }
+
+    /* Switch ::before to normal divider */
+    footer::before {
+        flex: none;
+        position: absolute !important;
+        width: 100% !important;
+        height: 2px !important;
+        content: '';
+        left: 0px !important;
+        z-index: 3 !important;
+    }
+    /* Enable hover effects */
+    footer {
+        transition: 0.75s;
+    }
+    footer:hover {
+        background-color: #2c5851;
+        transition: 0.75s;
+        box-shadow: inset -1em 0px #f1f7ed;
+    }
+
+    /* Sidebar at full height */
+    .sidebar {
+        height: 100%;
+    }
+}
+
+/* <600h or <1024w - Sidebar collapses */
+@media screen and (max-height: 599px), screen and (max-width: 1023px) {
+    .sidebar {
+        position: relative;
+        bottom: 182px;
+        top: auto;
+        width: 100%;
+        height: auto;
+    }
+    .sidebar {
+        padding-bottom: 1em;
+    }
+
+    /* Move Footer below sidebar */
+    footer {
+        position: relative;
+        top: 570px;
+    }
+
+    /* Turn footer divider back off */
+    footer::before {
+        /* Override. */
+        position: initial !important;
+        width: auto !important;
+        height: auto !important;
+        content: '';
+        left: initial !important;
+        z-index: auto !important;
+    }
+
+    /* Intro & Main full width */
+    .page-wrapper {
+        margin-right: 16px;
+    }
+    .intro {
+        width: auto;
+    }
+    header {
+        width: calc(100% - 32px);
+    }
+    .summary::after {
+        width: calc(100% - 32px);
+    }
+    .intro::after {
+        width: 100%;
+    }
+    body::after,
+    .page-wrapper::after {
+        width: calc(60% - (628px / 2));
+    }
+    .page-wrapper::after {
+        right: 16px;
+    }
+    .main {
+        width: auto;
+    }
+
+    /* Disable box-shadow bar hover effect */
+    .intro:hover > div,
+    .intro:hover::after,
+    .intro:hover .summary::after,
+    .main > div:hover,
+    .sidebar:hover,
+    footer:hover {
+        box-shadow: none;
+    }
+    /* Disable all header hover effects */
+    .intro:hover .summary::after {
+        background-color: #ba2d0b;
+        transition: 0.75s;
+    }
+}
+/* END Collapsing Footer & Sidebar */

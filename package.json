@@ -1,0 +1,30 @@
+{
+    "name": "zen-garden",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "postcss:watch": "postcss src/style-src.css -o style.css  --watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/julianmedwards/zen-garden.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/julianmedwards/zen-garden/issues"
+    },
+    "homepage": "https://github.com/julianmedwards/zen-garden#readme",
+    "devDependencies": {
+        "autoprefixer": "^10.4.4",
+        "postcss": "^8.4.12",
+        "postcss-cli": "^9.1.0"
+    },
+    "browserslist": [
+        "defaults",
+        "ie >= 9",
+        "maintained node versions"
+    ]
+}
